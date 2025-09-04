@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1 style="color: red;">Quora Post</h1>
+    <hr>
+    <% for(post of posts){ %>
+        <div class="post">
+            <h4 class="user">Username: @<%= post.username %></h4>
+            <p class="about">About: <%= post.about %></p>
+            <a href="http://localhost:3006/posts/<%=post.id%>">See In Detail</a>
+            <br>
+            <a href="http://localhost:3006/posts/<%=post.id%>/edit">Edit</a>
+            <form action="/posts/<%=post.id%>?_method=DELETE" method="post">
+                <button>Delete</button>
+            </form>
+        </div>
+    <% } %>
+    <a href="http://localhost:3006/posts/new">Create New Post</a>
+</body>
+
+</html>
